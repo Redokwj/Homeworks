@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 lesson_3/lesson_3_pandas.ipynb
 lesson_14_anomaly_detection/creditcard.csv
+lesson_21_sent_analysis\results
+lesson_21_sent_analysis/results/checkpoint-500/
+lesson_21_sent_analysis/results/checkpoint-939/
