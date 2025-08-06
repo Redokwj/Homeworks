@@ -2,12 +2,13 @@
 
 ## Overview
 
-    Ця програма відстежує чи очі відкриті чи закриті на зображенні за допомогою MediaPipe Face Mesh. В якості API використовується FastAPI.
+    Ця програма відстежує чи очі відкриті чи закриті на зображенні з допомогою MediaPipe Face Mesh. В якості API використовується FastAPI.
 
 ## Deployment Info
 
     Для запуску використовується unicorn:
-    uvicorn main:app --reload
+
+    ```uvicorn main:app --reload```
 
     Після запуску сервер буде доступний за адресою http://127.0.0.1:8000
 
@@ -37,16 +38,16 @@
 
     Приклад відповіді:
 
-        {
+        ```{
         "left_eye_state": "open",
         "right_eye_state": "closed",
         "left_EAR": 0.278,
         "right_EAR": 0.190,
         "output_image": "output.jpg"
-        }
+        }```
 
     Якщо обличчя не знайдено, повертається:
 
-        {
+        ```{
         "error": "No face detected"
-        }
+        }```
