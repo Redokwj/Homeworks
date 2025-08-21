@@ -27,7 +27,7 @@ docker run -p 8000:8000 my_app
 docker run my_app test_app.py
 ```
 
-### Скріншоти
+### 3. Скріншоти
 
 #### Створення білда Docker
 
