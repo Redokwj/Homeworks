@@ -1,53 +1,46 @@
 # Eye State Detection
 
-## Overview
+## Запуск контейнера
 
-    Ця програма відстежує чи очі відкриті чи закриті на зображенні з допомогою MediaPipe Face Mesh. В якості API використовується FastAPI.
+### 1. Збірка Docker-образу
 
-## Deployment Info
+```bash
+docker build -t my_app .
+```
 
-    Для запуску використовується unicorn:
+---
 
-    ```uvicorn main:app --reload```
+### 2. Запуск FastAPI
 
-    Після запуску сервер буде доступний за адресою http://127.0.0.1:8000
+```bash
+docker run -p 8000:8000 my_app
+```
 
-## Installation Instructions
+Відкриваємо в браузері:
+[http://localhost:8000/docs](http://localhost:8000/docs)
 
-    Клонуйте репозиторій або скопіюйте файли у вашу папку.
+---
 
-    Встановіть залежності:
+У контейнері можна запускати інші Python-скрипти, наприклад:
 
-    pip install -r requirements.txt
+```bash
+docker run my_app test_app.py
+```
 
-## Modeling Info
+### Скріншоти
 
-    Використовується MediaPipe Face Mesh для отримання ключових точок обличчя.
+#### Створення білда Docker
 
-    Для оцінки стану очей використовується Eye Aspect Ratio (EAR), з його допомогою розраховується відстань між ключовими точками. Око вважається відкритим якщо його значення більше 0.244
+![Buid](screenshots/buid.png)
 
-## Interface Description
+#### Запуск додатка
 
-    Endpoint: POST /detect_eyes/
+![Run](screenshots/run.png)
 
-    Опис: Приймає зображення, повертає стал лівого і правого ока і шлях до збереженого зображення з підписами.
+#### WebAPI
 
-    Вхідні дані: file — зображення в форматі jpg/png.
+![WebAPI](screenshots/webapi.png)
 
-    Вихідні дані: JSON
+#### Результати виконання програми
 
-    Приклад відповіді:
-
-        ```{
-        "left_eye_state": "open",
-        "right_eye_state": "closed",
-        "left_EAR": 0.278,
-        "right_EAR": 0.190,
-        "output_image": "output.jpg"
-        }```
-
-    Якщо обличчя не знайдено, повертається:
-
-        ```{
-        "error": "No face detected"
-        }```
+![Result](screenshots/result.png)
